@@ -1,18 +1,18 @@
-int size;
+int len;
 int limit;
 
 public void setup()
 {
   background(0);
   size(500, 500);
-  size = 500;
+  len = 500;
   limit = 15;
-  sierpinskiCarpet(0, 0, size, limit);
+  sierpinskiCarpet(0, 0, len, limit);
 }
 public void draw()
 {
   background(0);
-  sierpinskiCarpet(0, 0, size, limit);
+  sierpinskiCarpet(0, 0, len, limit);
 }
 
 public void sierpinskiCarpet(int x, int y, int len, int limit) {
@@ -34,13 +34,13 @@ public void keyPressed()
 {
   if (key == 'w')
   {
-    if (size > 100) {
-      size -= 100;
+    if (len > 100) {
+      len -= 100;
     }
   }
   if (key == 's')
   {
-    size += 100;
+    len += 100;
   }
   if (key == 'e')
   {
@@ -53,5 +53,10 @@ public void keyPressed()
     if (limit > 15) {
       limit -= 15;
     }
+  }
+  if (key == ' ')
+  {
+    len = 500;
+    limit = 15;
   }
 }
