@@ -1,4 +1,4 @@
-int len;
+/*int len;
 int limit;
 
 public void setup()
@@ -59,4 +59,44 @@ public void keyPressed()
     len = 500;
     limit = 15;
   }
+}
+*/
+float angle;
+void setup() {
+  size(800, 600);
+  noStroke();
+  fill(0, 15, 30);
+}
+
+void draw() {
+  background(255);
+  float x = width;
+  float dia = 25;
+  int num = 50;
+
+  translate(width/2, height/2);
+
+  // call recursive function to draw spirals
+  pushMatrix();
+  drawSpiral(x, dia, num, radians(angle));
+  angle += 0.1;
+  popMatrix();
+}
+
+// recursive function to draw spirals
+void drawSpiral(float x, float dia, int num, float rotation) {
+  if (num <= 0) {
+    return;
+  }
+
+  // apply rotation and draw current circle
+  pushMatrix();
+  rotate(rotation);
+  ellipse(x, 0, dia, dia);
+  popMatrix();
+
+  // recurse with updated parameters
+  drawSpiral(x * 0.95, dia, num - 1, rotation + radians(angle));
+
+  // apply scaling
 }
