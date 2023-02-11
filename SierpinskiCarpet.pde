@@ -89,20 +89,20 @@ void draw() {
   fill(#FFE967);
   star(0, 0, 30, 70, 5);
   popMatrix();
-  
+
   noStroke();
   fill(255);
   float x = width;
   float len2 = 25;
-  int number = 50;
-  
+  int num = 50;
+
   pushMatrix();
-  illusion(x, number, len2, radians(angle2));
-  if (isSpining){
-   angle2 -= 0.1; 
+  illusion(x, len2, num, radians(angle2));
+  if (isSpining) {
+    angle2 -= 0.1;
   }
   popMatrix();
-  
+
   if (isSpining) {
     angle += 3 * directionn;
   }
@@ -140,16 +140,17 @@ public void star(float x, float y, float radius1, float radius2, int npoints) {
 }
 
 
-public void illusion(float x, int num, float len2, float rotate){
-  if (num > 0){
-   pushMatrix();
-   rotate(rotate);
-   ellipse(x, 0, len2, len2);
-   popMatrix();
-   
-   illusion(x * 0.95, num - 1, len2, rotate + radians(angle2));
-  
+public void illusion(float x, float len2, int num, float rotate) {
+  if (num <= 0) {
+    return;
   }
+
+  pushMatrix();
+  rotate(rotate);
+  ellipse(x, 0, len2, len2);
+  popMatrix();
+
+  illusion(x * 0.95, len2, num - 1, rotate + radians(angle2));
 }
 
 
