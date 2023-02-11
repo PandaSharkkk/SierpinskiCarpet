@@ -83,7 +83,6 @@ void draw(){
   if (isSpining){
    angle += 3 * directionn; 
   }
-  System.out.println(dia);
   if(dia >= 1625){
    dia = 800; 
   }
