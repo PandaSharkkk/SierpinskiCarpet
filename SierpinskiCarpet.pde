@@ -63,9 +63,9 @@ public void keyPressed()
 */
 float r;
 float len = 300;
-boolean spin = true;
-int dir = 1;
-int colr = (int)(Math.random()*150) + 100;
+boolean isSpining = true;
+int directionn = 1;
+int colr1 = (int)(Math.random()*150) + 100;
 void setup(){
  size(800, 600);
  r = 0;
@@ -81,8 +81,8 @@ void draw(){
   fractal(0.0, len/2, len);
   fractal(-len/2, 0, len);
   fractal(0.0, -len/2, len);
-  if (spin){
-   r += 3 * dir; 
+  if (isSpining){
+   r += 3 * directionn; 
   }
   System.out.println(len);
   if(len >= 1625){
@@ -92,7 +92,7 @@ void draw(){
 
 
 public void fractal(float x, float y, float siz) {
-  fill(colr, colr, colr);
+  fill(colr1, colr1, colr1);
   ellipse(x, y, siz, siz);
   if (siz > 100) {
     fractal(x - siz/4, y, siz/2);
@@ -113,16 +113,16 @@ public void keyPressed()
     len += 25;
   }
   if(key == ' '){
-   if(spin){
-    spin = false;
+   if(isSpining){
+    isSpining = false;
    } else {
-    spin = true;
+    isSpining = true;
    }
   }
   if (key == 'r'){
-   dir *= -1;
+   directionn *= -1;
   }
   if(key == 'c'){
-   colr = (int)(Math.random()*150) + 100;
+   colr1 = (int)(Math.random()*150) + 100;
   }
 }
