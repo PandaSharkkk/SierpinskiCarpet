@@ -61,32 +61,31 @@ public void keyPressed()
   }
 }
 */
-float r;
-float len = 300;
+float angle;
+float dia = 300;
 boolean isSpining = true;
 int directionn = 1;
 int colr1 = (int)(Math.random()*150) + 100;
 void setup(){
  size(800, 600);
- r = 0;
 }
 
 void draw(){ 
   background(0);
   translate(width/2, height/2);
-  rotate(radians(r));
+  rotate(radians(angle));
   fill(255, 0, 0);
   //rect(0, 0, 50, 50);
-  fractal(len/2, 0, len);
-  fractal(0.0, len/2, len);
-  fractal(-len/2, 0, len);
-  fractal(0.0, -len/2, len);
+  fractal(dia/2, 0, dia);
+  fractal(0.0, dia/2, dia);
+  fractal(-dia/2, 0, dia);
+  fractal(0.0, -dia/2, dia);
   if (isSpining){
-   r += 3 * directionn; 
+   angle += 3 * directionn; 
   }
-  System.out.println(len);
-  if(len >= 1625){
-   len = 800; 
+  System.out.println(dia);
+  if(dia >= 1625){
+   dia = 800; 
   }
 }
 
@@ -106,11 +105,11 @@ public void keyPressed()
 {
   if (key=='w')
   {
-    len -= 25;
+    dia -= 25;
   }
   if (key=='s')
   {
-    len += 25;
+    dia += 25;
   }
   if(key == ' '){
    if(isSpining){
