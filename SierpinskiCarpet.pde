@@ -62,6 +62,7 @@ public void keyPressed()
 }
 */
 float angle;
+float angle2;
 float dia = 300;
 boolean isSpining = true;
 int directionn = 1;
@@ -72,6 +73,7 @@ void setup() {
 
 void draw() {
   background(0);
+  stroke(1);
   translate(width/2, height/2);
   fill(255, 0, 0);
   pushMatrix();
@@ -87,8 +89,17 @@ void draw() {
   fill(#FFE967);
   star(0, 0, 30, 70, 5);
   popMatrix();
+  
+  noStroke();
+  fill(255);
+  float x = width;
+  float len2 = 25;
+  int number = 50;
+  illusion(x, number, len2, radians(angle2));
+  
   if (isSpining) {
     angle += 3 * directionn;
+    angle2 -= 0.1;
   }
   if (dia >= 1625) {
     dia = 800;
@@ -123,6 +134,20 @@ public void star(float x, float y, float radius1, float radius2, int npoints) {
   endShape(CLOSE);
 }
 
+
+public void illusion(float x, int num, float len2, float rotate){
+  if (num > 0){
+   pushMatrix();
+   rotate(rotate);
+   ellipse(x, 0, len2, len2);
+   popMatrix();
+   
+   illusion(x * 0.95, num - 1, len2, rotate + radians(angle2));
+  
+  }
+}
+
+
 public void keyPressed()
 {
   if (key=='w')
@@ -147,4 +172,3 @@ public void keyPressed()
     colr1 = (int)(Math.random()*150) + 100;
   }
 }
-
