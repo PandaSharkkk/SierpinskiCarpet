@@ -73,7 +73,6 @@ void setup() {
 void draw() {
   background(0);
   translate(width/2, height/2);
-  rotate(radians(angle));
   fill(255, 0, 0);
   pushMatrix();
   rotate(radians(angle));
