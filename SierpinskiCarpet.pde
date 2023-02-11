@@ -98,9 +98,7 @@ void draw() {
 
   pushMatrix();
   illusion(x, len2, num, radians(angle2));
-  if (isSpining) {
-    angle2 -= 0.1;
-  }
+  angle2 -= 0.1;
   popMatrix();
 
   if (isSpining) {
@@ -140,17 +138,17 @@ public void star(float x, float y, float radius1, float radius2, int npoints) {
 }
 
 
-public void illusion(float x, float len2, int num, float rotate) {
+public void illusion(float x, float len2, int num, float rotation) {
   if (num <= 0) {
     return;
   }
 
   pushMatrix();
-  rotate(rotate);
+  rotate(rotation);
   ellipse(x, 0, len2, len2);
   popMatrix();
 
-  illusion(x * 0.95, len2, num - 1, rotate + radians(angle2));
+  illusion(x * 0.95, len2, num - 1, rotation + radians(angle2));
 }
 
 
@@ -178,4 +176,5 @@ public void keyPressed()
     colr1 = (int)(Math.random()*150) + 100;
   }
 }
+
 
