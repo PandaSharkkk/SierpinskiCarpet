@@ -95,11 +95,16 @@ void draw() {
   float x = width;
   float len2 = 25;
   int number = 50;
+  
+  pushMatrix();
   illusion(x, number, len2, radians(angle2));
+  if (isSpining){
+   angle2 -= 0.1; 
+  }
+  popMatrix();
   
   if (isSpining) {
     angle += 3 * directionn;
-    angle2 -= 0.1;
   }
   if (dia >= 1625) {
     dia = 800;
@@ -172,3 +177,4 @@ public void keyPressed()
     colr1 = (int)(Math.random()*150) + 100;
   }
 }
+
