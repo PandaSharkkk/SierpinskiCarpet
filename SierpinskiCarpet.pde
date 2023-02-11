@@ -61,42 +61,68 @@ public void keyPressed()
   }
 }
 */
-float angle;
-void setup() {
-  size(800, 600);
-  noStroke();
-  fill(0, 15, 30);
+float r;
+float len = 300;
+boolean spin = true;
+int dir = 1;
+int colr = (int)(Math.random()*150) + 100;
+void setup(){
+ size(800, 600);
+ r = 0;
 }
 
-void draw() {
-  background(255);
-  float x = width;
-  float dia = 25;
-  int num = 50;
-
+void draw(){ 
+  background(0);
   translate(width/2, height/2);
-
-  // call recursive function to draw spirals
-  pushMatrix();
-  drawSpiral(x, dia, num, radians(angle));
-  angle += 0.1;
-  popMatrix();
+  rotate(radians(r));
+  fill(255, 0, 0);
+  //rect(0, 0, 50, 50);
+  fractal(len/2, 0, len);
+  fractal(0.0, len/2, len);
+  fractal(-len/2, 0, len);
+  fractal(0.0, -len/2, len);
+  if (spin){
+   r += 3 * dir; 
+  }
+  System.out.println(len);
+  if(len >= 1625){
+   len = 800; 
+  }
 }
 
-// recursive function to draw spirals
-void drawSpiral(float x, float dia, int num, float rotation) {
-  if (num <= 0) {
-    return;
+
+public void fractal(float x, float y, float siz) {
+  fill(colr, colr, colr);
+  ellipse(x, y, siz, siz);
+  if (siz > 100) {
+    fractal(x - siz/4, y, siz/2);
+    fractal(x, y + siz/4, siz/2);
+    fractal(x + siz/4, y, siz/2);
+    fractal(x, y - siz/4, siz/2);
   }
+}
 
-  // apply rotation and draw current circle
-  pushMatrix();
-  rotate(rotation);
-  ellipse(x, 0, dia, dia);
-  popMatrix();
-
-  // recurse with updated parameters
-  drawSpiral(x * 0.95, dia, num - 1, rotation + radians(angle));
-
-  // apply scaling
+public void keyPressed()
+{
+  if (key=='w')
+  {
+    len -= 25;
+  }
+  if (key=='s')
+  {
+    len += 25;
+  }
+  if(key == ' '){
+   if(spin){
+    spin = false;
+   } else {
+    spin = true;
+   }
+  }
+  if (key == 'r'){
+   dir *= -1;
+  }
+  if(key == 'c'){
+   colr = (int)(Math.random()*150) + 100;
+  }
 }
